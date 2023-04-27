@@ -10,7 +10,6 @@ const setupAndStartServer = async () => {
 
     app.use("/api" , APIroutes);
 
-
     app.listen(PORT , async () => {
         console.log(`Server started at ${PORT}`);
     })

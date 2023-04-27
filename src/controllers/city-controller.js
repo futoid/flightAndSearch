@@ -44,7 +44,7 @@ const get = async (req, res) => {
 // PUT --> req.body with :id
 const update = async (req, res) => {
     try{
-        const city = await cityService.updateCity(res.params.id , req.body);
+        const city = await cityService.updateCity(req.params.id , req.body);
         return res.status(200).json({
             obj : city,
             success : "true",
