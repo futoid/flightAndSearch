@@ -1,3 +1,4 @@
+const { response } = require("express");
 const {Flight} = require("../models/index");
 const {Op} = require("sequelize");
 class FlightRepository {
@@ -49,6 +50,21 @@ class FlightRepository {
                 where : filterProperties
             });
             return flight;
+        }
+        catch(error){
+            console.log("Something went wrong in the repository layer");
+            throw {error};
+        }
+    }
+
+    async updateSeats(data){
+        try{
+            const response = await this.getFlightById(data.id);
+            if(data.totalSeats){
+                response.totalSeats = data.totalSeats;
+            }
+            response.save();
+            return response; 
         }
         catch(error){
             console.log("Something went wrong in the repository layer");

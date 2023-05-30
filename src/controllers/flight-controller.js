@@ -66,8 +66,30 @@ const getAll = async(req,res) => {
     }
 }
 
+const updateSeat = async(req,res) => {
+    try{
+        const updatedSeatsData = await flightService.updateSeats(req.body);
+        return res.status(201).json({
+            data: updatedSeatsData,
+            success: true,
+            err: {},
+            message: 'Successfully updated seats data'
+        })        
+    }
+    catch(error){
+        console.log(error);
+        return res.status(500).json({
+            data: {},
+            success: false,
+            message: 'Not able to update seats',
+            err: error
+        });
+    }
+}
+
 module.exports = {
     create,
     getAll,
-    getById
+    getById,
+    updateSeat
 }
