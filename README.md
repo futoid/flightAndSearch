@@ -1,4 +1,4 @@
-# flightsAndSearch
+# Search System
 How to setup this repository in your local.
 
 ### Initial Setup
